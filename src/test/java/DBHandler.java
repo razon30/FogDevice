@@ -18,6 +18,32 @@ import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
 
 public class DBHandler {
 
+    public static class Temperature {
+        private double temp;
+        private long timeInMillis;
+
+        public Temperature(double temp, int timeInMillis) {
+            this.temp = temp;
+            this.timeInMillis = timeInMillis;
+        }
+
+        public double getTemp() {
+            return temp;
+        }
+
+        public void setTemp(double temp) {
+            this.temp = temp;
+        }
+
+        public long getTimeInMillis() {
+            return timeInMillis;
+        }
+
+        public void setTimeInMillis(long timeInMillis) {
+            this.timeInMillis = timeInMillis;
+        }
+    }
+
     public static List<Temperature> recipes = Arrays.asList(
             new Temperature(25, 23456743),
             new Temperature(30, 23456354),
@@ -31,7 +57,7 @@ public class DBHandler {
         // Altas cluster specifics. Be sure it includes
         // a valid username and password! Note that in a production environment,
         // you do not want to store your password in plain-text here.
-        ConnectionString mongoUri = new ConnectionString("mongodb+srv://razon_2:1qazZAQ@cluster0.i2mtl6y.mongodb.net/?retryWrites=true&w=majority");
+        ConnectionString mongoUri = new ConnectionString("<Replace this with your user string. Dont forget to repalce the password in the user string as well.>");
 
         // Provide the name of the database and collection you want to use.
         // If they don't already exist, the driver and Atlas will create them
@@ -80,31 +106,4 @@ public class DBHandler {
 
 
     }
-
-    public static class Temperature {
-        private double temp;
-        private long timeInMillis;
-
-        public Temperature(double temp, int timeInMillis) {
-            this.temp = temp;
-            this.timeInMillis = timeInMillis;
-        }
-
-        public double getTemp() {
-            return temp;
-        }
-
-        public void setTemp(double temp) {
-            this.temp = temp;
-        }
-
-        public long getTimeInMillis() {
-            return timeInMillis;
-        }
-
-        public void setTimeInMillis(long timeInMillis) {
-            this.timeInMillis = timeInMillis;
-        }
-    }
-
 }
